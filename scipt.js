@@ -18,5 +18,20 @@ function startGame() {
 
   document.querySelector("#diamond").classList.add("falling");
 
-  // så er der klasser på ...
+  // så er der klasser på ... nu skal vi kunne klikke
+  document.querySelector("#coin0").addEventListener("click", clickCoin);
+  document.querySelector("#diamond").addEventListener("click", clickDiamond);
+  document.querySelector("#bomb").addEventListener("click", clickBomb);
+}
+
+function clickCoin() {
+  console.log("click coin");
+}
+
+function clickDiamond() {
+  console.log("click diamond");
+}
+
+function clickBomb() {
+  console.log("click bomb");
 }
