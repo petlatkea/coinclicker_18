@@ -1,5 +1,8 @@
 window.addEventListener("load", sidenVises);
 
+let point = 0;
+let liv = 3;
+
 function sidenVises() {
   console.log("siden vises");
   startGame();
@@ -7,6 +10,10 @@ function sidenVises() {
 
 function startGame() {
   console.log("start game");
+
+  // nulstil point og liv
+  point = 0;
+  liv = 3;
 
   // tilføj falling på coin0,1,2,3 diamond, og bomb
   document.querySelector("#coin0").classList.add("falling");
@@ -40,6 +47,8 @@ function clickCoin() {
 function coinGone() {
   document.querySelector("#coin0").classList.remove("paused");
   document.querySelector("#coin0 .coin_sprite").classList.remove("dissappear");
+  // giv point
+  givePoint();
   // start flytte-animationen forfra
   document.querySelector("#coin0").classList.remove("falling");
   document.querySelector("#coin0").offsetHeight;
@@ -68,6 +77,25 @@ function exploded() {
   document.querySelector("#game_elements").classList.remove("shake");
 
   // TODO: mist et liv
+  loseLife();
 
   document.querySelector("#bomb").addEventListener("click", clickBomb);
+}
+
+function givePoint() {
+  // add 1 point
+  point++;
+
+  // show points
+  document.querySelector("#points .antal").innerHTML = point;
+}
+
+function loseLife() {
+  liv--;
+
+  // TODO: Vis liv
+
+  console.log("liv: " + liv);
+
+  // TODO: Game over!
 }
