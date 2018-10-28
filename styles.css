@@ -12,7 +12,7 @@ body {
 }
 .coin {
   position: absolute;
-
+  cursor: crosshair;
 }
 
 .coin_sprite {
@@ -187,7 +187,6 @@ body {
 }
 
 #points .coin {
-  display: inline-block;
   background-image: url(coin.svg);
   background-size: 100%;
   width: 1em;
@@ -197,7 +196,7 @@ body {
 #points .antal {
 /*  outline: 2px solid red;*/
   font-feature-settings: tnum;
-  width: 4ex;
+  width: 6ex;
   text-align: right;
 }
 

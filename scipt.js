@@ -27,6 +27,9 @@ function startGame() {
 
   // så er der klasser på ... nu skal vi kunne klikke
   document.querySelector("#coin0").addEventListener("click", clickCoin);
+  document.querySelector("#coin1").addEventListener("click", clickCoin);
+  document.querySelector("#coin2").addEventListener("click", clickCoin);
+  document.querySelector("#coin3").addEventListener("click", clickCoin);
   document.querySelector("#diamond").addEventListener("click", clickDiamond);
   document.querySelector("#bomb").addEventListener("click", clickBomb);
 }
@@ -34,27 +37,27 @@ function startGame() {
 function clickCoin() {
   console.log("click coin");
 
-  document.querySelector("#coin0").removeEventListener("click", clickCoin);
+  this.removeEventListener("click", clickCoin);
 
   // når der er klikket på mønten skal den forsvinde
   // først skal den pause
-  document.querySelector("#coin0").classList.add("paused");
-  document.querySelector("#coin0 .coin_sprite").classList.add("dissappear");
+  this.classList.add("paused");
+  this.querySelector(".coin_sprite").classList.add("dissappear");
   // når den er forsvundet, skal den dukke op igen
-  document.querySelector("#coin0").addEventListener("animationend", coinGone);
+  this.addEventListener("animationend", coinGone);
 }
 
 function coinGone() {
-  document.querySelector("#coin0").classList.remove("paused");
-  document.querySelector("#coin0 .coin_sprite").classList.remove("dissappear");
+  this.classList.remove("paused");
+  this.querySelector(".coin_sprite").classList.remove("dissappear");
   // giv point
   givePoint();
   // start flytte-animationen forfra
-  document.querySelector("#coin0").classList.remove("falling");
-  document.querySelector("#coin0").offsetHeight;
-  document.querySelector("#coin0").classList.add("falling");
+  this.classList.remove("falling");
+  this.offsetHeight;
+  this.classList.add("falling");
   // gør så man kan klikke på mønten igen
-  document.querySelector("#coin0").addEventListener("click", clickCoin);
+  this.addEventListener("click", clickCoin);
 }
 
 function clickDiamond() {
