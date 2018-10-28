@@ -26,6 +26,26 @@ function startGame() {
 
 function clickCoin() {
   console.log("click coin");
+
+  document.querySelector("#coin0").removeEventListener("click", clickCoin);
+
+  // når der er klikket på mønten skal den forsvinde
+  // først skal den pause
+  document.querySelector("#coin0").classList.add("paused");
+  document.querySelector("#coin0 .coin_sprite").classList.add("dissappear");
+  // når den er forsvundet, skal den dukke op igen
+  document.querySelector("#coin0").addEventListener("animationend", coinGone);
+}
+
+function coinGone() {
+  document.querySelector("#coin0").classList.remove("paused");
+  document.querySelector("#coin0 .coin_sprite").classList.remove("dissappear");
+  // start flytte-animationen forfra
+  document.querySelector("#coin0").classList.remove("falling");
+  document.querySelector("#coin0").offsetHeight;
+  document.querySelector("#coin0").classList.add("falling");
+  // gør så man kan klikke på mønten igen
+  document.querySelector("#coin0").addEventListener("click", clickCoin);
 }
 
 function clickDiamond() {
@@ -34,4 +54,20 @@ function clickDiamond() {
 
 function clickBomb() {
   console.log("click bomb");
+  document.querySelector("#bomb").removeEventListener("click", clickBomb);
+  // når der er klikket på bomben skal den eksplodere
+  document.querySelector("#bomb").classList.add("explode");
+  document.querySelector("#bomb").addEventListener("animationend", exploded);
+  // og skærmen skal ryste
+  document.querySelector("#game_elements").classList.add("shake");
+}
+
+function exploded() {
+  console.log("explosion over");
+  document.querySelector("#bomb").classList.remove("explode");
+  document.querySelector("#game_elements").classList.remove("shake");
+
+  // TODO: mist et liv
+
+  document.querySelector("#bomb").addEventListener("click", clickBomb);
 }
