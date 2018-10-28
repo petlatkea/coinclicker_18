@@ -20,26 +20,26 @@ body {
 
 #coin0 {
   left: 0vw;
-  top: 10vw;
+/*  top: 10vw;*/
 }
 
 #coin1 {
   left: 15vw;
-  top: 5vw;
+/*  top: 5vw;*/
 
   animation-delay: .4s;
 }
 
 #coin2 {
   left: 35vw;
-  top: 30vw;
+/*  top: 30vw;*/
 
   animation-delay: .7s;
 }
 
 #coin3 {
   left: 50vw;
-  top: 25vw;
+/*  top: 25vw;*/
 
   animation-delay: 1s;
 }
@@ -86,6 +86,9 @@ body {
   animation-duration: 2s;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
+
+  /* sikr at vi altid er uden for skærmen, hvis animationen er delayet */
+  top: -10vw;
 }
 
 @keyframes falling_kf {
