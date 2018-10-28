@@ -5,11 +5,80 @@ let liv = 3;
 
 function sidenVises() {
   console.log("siden vises");
-  startGame();
+
+  showStart();
+
+}
+
+function showStart() {
+  console.log("showStart");
+  document.querySelector("#start").classList.remove("hide");
+
+  // start animation on button
+  document.querySelector("#play").classList.add("pulse");
+
+  // show animations in background
+    // placer elementer på tilfældige placeringer
+  document.querySelector("#coin0").classList.add("position1");
+  document.querySelector("#coin1").classList.add("position2");
+  document.querySelector("#coin2").classList.add("position3");
+  document.querySelector("#coin3").classList.add("position5");
+
+  document.querySelector("#bomb").classList.add("position5");
+
+  document.querySelector("#diamond").classList.add("position4");
+
+  // tilføj falling på coin0,1,2,3 diamond, og bomb
+  document.querySelector("#coin0").classList.add("falling");
+  document.querySelector("#coin1").classList.add("falling");
+  document.querySelector("#coin2").classList.add("falling");
+  document.querySelector("#coin3").classList.add("falling");
+  document.querySelector("#bomb").classList.add("falling");
+  document.querySelector("#diamond").classList.add("falling");
+
+  document.querySelector("#coin0").addEventListener("animationiteration", hitBottom);
+  document.querySelector("#coin1").addEventListener("animationiteration", hitBottom);
+  document.querySelector("#coin2").addEventListener("animationiteration", hitBottom);
+  document.querySelector("#coin3").addEventListener("animationiteration", hitBottom);
+  document.querySelector("#diamond").addEventListener("animationiteration", hitBottom);
+  document.querySelector("#bomb").addEventListener("animationiteration", hitBottom);
+
+  // register click on button, hideStart
+  document.querySelector("#play").addEventListener("click", hideStart);
+}
+
+function hideStart() {
+  console.log("hideStart");
+  document.querySelector("#play").removeEventListener("click", hideStart);
+
+  document.querySelector("#start").classList.add("fade_out");
+
+  // stop animations
+  document.querySelector("#coin0").classList.remove("falling");
+  document.querySelector("#coin1").classList.remove("falling");
+  document.querySelector("#coin2").classList.remove("falling");
+  document.querySelector("#coin3").classList.remove("falling");
+
+  document.querySelector("#bomb").classList.remove("falling");
+
+  document.querySelector("#diamond").classList.remove("falling");
+  document.querySelector("#coin0").removeEventListener("animationiteration", hitBottom);
+  document.querySelector("#coin1").removeEventListener("animationiteration", hitBottom);
+  document.querySelector("#coin2").removeEventListener("animationiteration", hitBottom);
+  document.querySelector("#coin3").removeEventListener("animationiteration", hitBottom);
+  document.querySelector("#diamond").removeEventListener("animationiteration", hitBottom);
+  document.querySelector("#bomb").removeEventListener("animationiteration", hitBottom);
+
+  // when done - start game
+  document.querySelector("#start").addEventListener("animationend", startGame);
+
 }
 
 function startGame() {
   console.log("start game");
+
+  document.querySelector("#start").removeEventListener("animationend", startGame);
+  document.querySelector("#start").classList.add("hide");
 
   // nulstil point og liv
   point = 0;

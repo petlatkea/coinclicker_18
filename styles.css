@@ -145,6 +145,39 @@ body {
   }
 }
 
+.fade_out {
+  animation-name: fadeout_kf;
+  animation-duration: .5s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeout_kf {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.pulse {
+  animation-name: pulse_kf;
+  animation-duration: 1.7s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: ease-in;
+}
+
+@keyframes pulse_kf {
+  0% {
+    transform: scale(0.97);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
 /* animationer */
 .paused {
   animation-play-state: paused;
@@ -285,4 +318,25 @@ body {
   height: 56.25vw;
   background-image: url(gameover.svg);
   background-size: 100%;
+}
+
+#start {
+  position: absolute;
+  width: 100vw;
+  height: 56.25vw;
+  background-image: url(start.svg);
+  background-size: 100%;
+  background-color: rgba(240, 248, 255, 0.75);
+}
+
+#play {
+  position: absolute;
+  width: 20vw;
+  height: 10vw;
+  background-image: url(play.svg);
+  background-size: 100%;
+  left: 33vw;
+  top: 42vw;
+
+  cursor: pointer;
 }
