@@ -1,3 +1,6 @@
+:root {
+  font-size: 2vw;
+}
 body {
   margin: 0;
 }
@@ -9,6 +12,11 @@ body {
 
   overflow: hidden;
   position: relative;
+
+/*  touch-action: none;*/
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
 }
 .coin {
   position: absolute;
@@ -23,29 +31,53 @@ body {
 }
 
 #coin0 {
-  left: 0vw;
+/*  left: 0vw;*/
 /*  top: 10vw;*/
 }
 
 #coin1 {
-  left: 15vw;
+/*  left: 15vw;*/
 /*  top: 5vw;*/
 
   animation-delay: .4s;
 }
 
 #coin2 {
-  left: 35vw;
+/*  left: 35vw;*/
 /*  top: 30vw;*/
 
   animation-delay: .7s;
 }
 
 #coin3 {
-  left: 50vw;
+/*  left: 50vw;*/
 /*  top: 25vw;*/
 
   animation-delay: 1s;
+}
+
+.position0 {
+  left: 0vw;
+}
+
+.position1 {
+  left: 10vw;
+}
+.position2 {
+  left: 20vw;
+}
+.position3 {
+  left: 30vw;
+}
+.position4 {
+  left: 40vw;
+}
+.position5 {
+  left: 50vw;
+}
+
+.position6 {
+  left: 60vw;
 }
 
 #diamond {
@@ -55,8 +87,8 @@ body {
   background-image: url(diamond.svg);
   background-size: 100%;
 
-  left: 25vw;
-  top: 20vw;
+/*  left: 25vw;*/
+/*  top: 20vw;*/
 
   animation-duration: 1.5s;
 }
@@ -69,8 +101,8 @@ body {
 
   background-image: url(bomb.svg);
   background-size: 100%;
-  left: 50vw;
-  top: 30vw;
+/*  left: 50vw;*/
+/*  top: 30vw;*/
 
   transform: translate(-55vw,-55vw) scale(.1);
 }
@@ -92,7 +124,7 @@ body {
 
 .falling {
   animation-name: falling_kf;
-  animation-duration: 2s;
+  animation-duration: 3s;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
 
@@ -179,9 +211,9 @@ body {
 /* UI */
 #points {
   position: absolute;
-  left: 90vw;
+  left: 87vw;
   color: white;
-  font-size: 20px;
+  font-size: 2rem;
   font-family: sans-serif;
   display: flex;
 }
@@ -189,30 +221,30 @@ body {
 #points .coin {
   background-image: url(coin.svg);
   background-size: 100%;
-  width: 1em;
-  height: 1em;
+  width: 2rem;
+  height: 2rem;
 }
 
 #points .antal {
 /*  outline: 2px solid red;*/
   font-feature-settings: tnum;
-  width: 6ex;
+  width: 6rem;
   text-align: right;
 }
 
 #energy {
   position: absolute;
-  left: 90vw;
-  top: 30px;
-  width: 4em;
+  left: 87vw;
+  top: 3rem;
+  width: 6rem;
 /*  outline: 2px solid red;*/
   display: flex;
   justify-content: space-between;
 }
 
 .heart {
-  width: 1em;
-  height: 1em;
+  width: 2rem;
+  height: 2rem;
   background-image: url(heart.svg);
   background-size: 100%;
 }

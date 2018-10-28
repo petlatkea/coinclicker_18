@@ -15,6 +15,16 @@ function startGame() {
   point = 0;
   liv = 3;
 
+  // placer elementer på tilfældige placeringer
+  document.querySelector("#coin0").classList.add("position1");
+  document.querySelector("#coin1").classList.add("position2");
+  document.querySelector("#coin2").classList.add("position3");
+  document.querySelector("#coin3").classList.add("position5");
+
+  document.querySelector("#bomb").classList.add("position5");
+
+  document.querySelector("#diamond").classList.add("position4");
+
   // tilføj falling på coin0,1,2,3 diamond, og bomb
   document.querySelector("#coin0").classList.add("falling");
   document.querySelector("#coin1").classList.add("falling");
@@ -26,18 +36,44 @@ function startGame() {
   document.querySelector("#diamond").classList.add("falling");
 
   // så er der klasser på ... nu skal vi kunne klikke
-  document.querySelector("#coin0").addEventListener("click", clickCoin);
-  document.querySelector("#coin1").addEventListener("click", clickCoin);
-  document.querySelector("#coin2").addEventListener("click", clickCoin);
-  document.querySelector("#coin3").addEventListener("click", clickCoin);
-  document.querySelector("#diamond").addEventListener("click", clickDiamond);
-  document.querySelector("#bomb").addEventListener("click", clickBomb);
+  document.querySelector("#coin0").addEventListener("mousedown", clickCoin);
+  document.querySelector("#coin1").addEventListener("mousedown", clickCoin);
+  document.querySelector("#coin2").addEventListener("mousedown", clickCoin);
+  document.querySelector("#coin3").addEventListener("mousedown", clickCoin);
+  document.querySelector("#diamond").addEventListener("mousedown", clickDiamond);
+  document.querySelector("#bomb").addEventListener("mousedown", clickBomb);
+
+  // når de har nået bunden skal de starte forfra
+  document.querySelector("#coin0").addEventListener("animationiteration", hitBottom);
+  document.querySelector("#coin1").addEventListener("animationiteration", hitBottom);
+  document.querySelector("#coin2").addEventListener("animationiteration", hitBottom);
+  document.querySelector("#coin3").addEventListener("animationiteration", hitBottom);
+  document.querySelector("#diamond").addEventListener("animationiteration", hitBottom);
+  document.querySelector("#bomb").addEventListener("animationiteration", hitBottom);
+
 }
+
+function hitBottom() {
+  // remove previous position
+  this.classList.remove("position0");
+  this.classList.remove("position1");
+  this.classList.remove("position2");
+  this.classList.remove("position3");
+  this.classList.remove("position4");
+  this.classList.remove("position5");
+  this.classList.remove("position6");
+
+  // get random number between 0 and 6
+  const number = Math.floor(Math.random()*7);
+
+  this.classList.add("position"+number);
+}
+
 
 function clickCoin() {
   console.log("click coin");
 
-  this.removeEventListener("click", clickCoin);
+  this.removeEventListener("mousedown", clickCoin);
 
   // når der er klikket på mønten skal den forsvinde
   // først skal den pause
@@ -57,7 +93,7 @@ function coinGone() {
   this.offsetHeight;
   this.classList.add("falling");
   // gør så man kan klikke på mønten igen
-  this.addEventListener("click", clickCoin);
+  this.addEventListener("mousedown", clickCoin);
 }
 
 function clickDiamond() {
@@ -66,7 +102,7 @@ function clickDiamond() {
 
 function clickBomb() {
   console.log("click bomb");
-  document.querySelector("#bomb").removeEventListener("click", clickBomb);
+  document.querySelector("#bomb").removeEventListener("mousedown", clickBomb);
   // når der er klikket på bomben skal den eksplodere
   document.querySelector("#bomb").classList.add("explode");
   document.querySelector("#bomb").addEventListener("animationend", exploded);
@@ -82,7 +118,7 @@ function exploded() {
   // TODO: mist et liv
   loseLife();
 
-  document.querySelector("#bomb").addEventListener("click", clickBomb);
+  document.querySelector("#bomb").addEventListener("mousedown", clickBomb);
 }
 
 function givePoint() {
