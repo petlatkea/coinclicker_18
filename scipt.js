@@ -51,6 +51,12 @@ function startGame() {
   document.querySelector("#diamond").addEventListener("animationiteration", hitBottom);
   document.querySelector("#bomb").addEventListener("animationiteration", hitBottom);
 
+  // skjul game over
+  document.querySelector("#gameover").classList.add("hide");
+
+  // sørg for at vi ikke er blurred
+  document.querySelector("#game").classList.remove("blur");
+
 }
 
 function hitBottom() {
@@ -121,6 +127,7 @@ function exploded() {
 }
 
 function givePoint() {
+  console.log("givePoint");
   // add 1 point
   point++;
 
@@ -129,13 +136,38 @@ function givePoint() {
 }
 
 function loseLife() {
-  // vis aktuelt liv som greyed out
-  document.querySelector("#heart" + liv).classList.add("gogrey");
+  console.log("loseLife");
 
-  // derefter træk 1 fra
-  liv--;
+  // Tjek først for game over
+  if( liv === 0 ) {
+    // der er ikke flere liv tilbage
+    gameOver();
+  } else {
 
-  console.log("liv: " + liv);
+    // vis aktuelt liv som greyed out
+    document.querySelector("#heart" + liv).classList.add("gogrey");
 
-  // TODO: Game over!
+    // derefter træk 1 fra
+    liv--;
+
+    console.log("liv: " + liv);
+  }
+}
+
+function gameOver() {
+  console.log("Game over");
+
+  // pause alle animationer i spillet
+//  document.querySelector("#game").classList.add("paused");
+  document.querySelector("#coin0").classList.add("paused");
+  document.querySelector("#coin1").classList.add("paused");
+  document.querySelector("#coin2").classList.add("paused");
+  document.querySelector("#coin3").classList.add("paused");
+  document.querySelector("#bomb").classList.add("paused");
+  document.querySelector("#diamond").classList.add("paused");
+
+  // vis game over
+  document.querySelector("#gameover").classList.add("show");
+  // blur alt andet
+  document.querySelector("#game").classList.add("blur");
 }

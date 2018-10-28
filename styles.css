@@ -115,6 +115,11 @@ body {
   visibility: visible;
 }
 
+.blur {
+  filter:blur(5px) brightness(80%);
+
+}
+
 .grey {
   filter: grayscale(80%);
 }
@@ -270,5 +275,14 @@ body {
   width: 2rem;
   height: 2rem;
   background-image: url(heart.svg);
+  background-size: 100%;
+}
+
+/* game over */
+#gameover {
+  position: absolute;
+  width: 100vw;
+  height: 56.25vw;
+  background-image: url(gameover.svg);
   background-size: 100%;
 }
