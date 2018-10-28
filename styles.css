@@ -115,6 +115,30 @@ body {
   visibility: visible;
 }
 
+.grey {
+  filter: grayscale(80%);
+}
+
+.gogrey {
+  animation-name: gogrey_kf;
+  animation-duration: 0.7s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+@keyframes gogrey_kf {
+  0% {
+    filter: grayscale(0%);
+  }
+
+  80% {
+    filter: grayscale(100%);
+  }
+
+  100% {
+    filter: grayscale(80%);
+  }
+}
 
 /* animationer */
 .paused {

@@ -64,11 +64,10 @@ function hitBottom() {
   this.classList.remove("position6");
 
   // get random number between 0 and 6
-  const number = Math.floor(Math.random()*7);
+  const number = Math.floor(Math.random() * 7);
 
-  this.classList.add("position"+number);
+  this.classList.add("position" + number);
 }
-
 
 function clickCoin() {
   console.log("click coin");
@@ -130,9 +129,11 @@ function givePoint() {
 }
 
 function loseLife() {
-  liv--;
+  // vis aktuelt liv som greyed out
+  document.querySelector("#heart" + liv).classList.add("gogrey");
 
-  // TODO: Vis liv
+  // derefter træk 1 fra
+  liv--;
 
   console.log("liv: " + liv);
 
